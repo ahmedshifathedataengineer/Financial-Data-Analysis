@@ -64,4 +64,34 @@ Market Cap Category: A classification based on market capitalization (e.g., Larg
 Sales Qrt Category: A classification based on quarterly sales performance.
 This data is used to perform the analysis and generate the moving averages, RSI, and other indicators.
 
+#### **Example Plot and Output**
+Upon running the script, you'll see:
+
+A graph showing the quarterly sales with moving averages and buy/sell signals.
+A printed output of the buy/sell signals and RSI values.
+Sample Output
+Buy/Sell Signals:
+                 Signal      Short_MA    Long_MA  Position
+Reliance Inds.      1.0    99810.000  99500.000       1.0
+TCS                 0.0    65357.000  67000.000       0.0
+HDFC Bank           1.0    50431.756  50200.756       1.0
+...
+
+### **Visual Output**
+The generated plot will show the company's sales data along with the calculated buy and sell signals. You’ll see green triangles for buy signals and red triangles for sell signals.
+
+#### **Financial Metrics**
+The project calculates the following key metrics:
+
+**Cumulative Return:** The total return on the company’s sales data over the period analyzed.
+**Sharpe Ratio:** A ratio that adjusts return for risk, helping to assess whether the company’s sales growth justifies the risks taken.
+
+#### **Key Takeaways for Finance Professionals**
+Identify Trends: Easily track short-term and long-term sales trends to adjust strategies.
+Optimize Decisions: Use buy/sell signals to determine the best times to take action based on sales performance.
+Manage Risks: By calculating the Sharpe ratio and RSI, you can better understand the risk associated with fluctuating sales.
+
+#### **License**
+This project is licensed under the MIT License.
+
 
