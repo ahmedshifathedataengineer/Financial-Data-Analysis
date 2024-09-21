@@ -5,13 +5,38 @@ import ta
 
 class FinancialAnalyzer:
     def __init__(self, data=None):
+        # Check if data is provided and is valid
         if data is None or 'Sales Qtr - Crore' not in data.columns:
-            print("No valid 'Sales Qtr - Crore' column found, generating synthetic data...")
-            self.data = self.generate_synthetic_data()
+            raise ValueError("Valid data with a 'Sales Qtr - Crore' column must be provided.")
         else:
             self.data = data
             self.data.set_index('Name', inplace=True)
+        
         self.signals = pd.DataFrame(index=self.data.index)
+
+    def load_from_csv(self, file_path):
+        """Loads financial data from a CSV file."""
+        try:
+            self.data = pd.read_csv(file_path)
+            if 'Sales Qtr - Crore' not in self.data.columns:
+                raise ValueError("The CSV file does not contain the required 'Sales Qtr - Crore' column.")
+            self.data.set_index('Name', inplace=True)
+        except FileNotFoundError:
+            print("File not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+    def load_from_json(self, file_path):
+        """Loads financial data from a JSON file."""
+        try:
+            self.data = pd.read_json(file_path)
+            if 'Sales Qtr - Crore' not in self.data.columns:
+                raise ValueError("The JSON file does not contain the required 'Sales Qtr - Crore' column.")
+            self.data.set_index('Name', inplace=True)
+        except FileNotFoundError:
+            print("File not found.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
     def calculate_moving_averages(self, short_window=40, long_window=100):
         self.data['Short_MA'] = self.data['Sales Qtr - Crore'].rolling(window=short_window, min_periods=1).mean()
